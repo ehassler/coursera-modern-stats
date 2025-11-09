@@ -1,0 +1,24 @@
+---
+title: "Example RMarkdown"
+author: "Edgar Hassler"
+date: "2022-08-12"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+We are using the `cars` data set which gives speed and stopping distance of cars from 1920.
+
+
+```{r echo=FALSE, fig.align='center', fig.width=5, fig.height=5, fig.cap='Speed versus stopping distance from cars data set'}
+fit <- lm(
+	dist ~ speed, 
+	data = cars
+)
+plot(cars)
+abline(fit)
+```
+
+The model is $\beta_0 + \beta_1 \text{Speed} + \epsilon = \text{Stopping Distance}$ where the intercept $\beta_0$ is `r coef(fit)[1]` and $\beta_1$ is `r coef(fit)[2]`.
